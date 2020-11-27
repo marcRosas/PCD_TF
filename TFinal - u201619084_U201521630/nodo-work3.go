@@ -13,7 +13,7 @@ import (
 )
 
 const centralAddr = "localhost:8001" // Nodo Central IP aquí
-const myPort = "8006"
+const myPort = "8008"
 
 const (
 	cnum = iota // iota genera valores en secuencia y se reinicia en cada bloque const
