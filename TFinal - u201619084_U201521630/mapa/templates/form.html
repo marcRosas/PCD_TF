@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TA02</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.2/css/bulma.min.css" />
+</head>
+<body>
+
+  <section class="hero is-link is-fullheight is-fullheight-with-navbar">
+    <div class="hero-body">
+      <div class="container">
+        <div style="padding:10px;background:#fff;border-radius:5px;color:#000;">
+        
+                <form action="/analizar" method="post" enctype="multipart/form-data" >
+                    <h2 class="title is-2" style="color:#000;">Grupo de Riesgo</h2>
+
+                    <div class="field">
+                        <label class="label">Grupos</label>
+                        <div class="control">
+                            <input type="number" class="input" id="clusters" name="clusters" min="1" max="999">
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label class="label">Iteraciones</label>
+                        <div class="control">
+                          <input type="number" class="input" id="iterations" name="iterations" min="1" max="999">
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label class="label">Distancia</label>
+                        <div class="control">
+                            <select name="distance" id="distance" class="select">
+                                <option value="euclid">euclid</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label class="label">Dataset</label>
+                        <div class="control">
+                            <input type="file" id="inputFile" name="file" class="input" accept=".json,.txt">
+                        </div>
+                      </div>
+                      <div class="field is-grouped">
+                        <div class="control">
+                          <button class="button is-link" type="submit">Analizar</button>
+                        </div>
+                      </div>
+                </form>
+            </div>
+            </div>
+          </div>
+        </section>
+      
+      </body>
+      </html>
+      

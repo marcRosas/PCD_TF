@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Resultado</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400;300" rel="stylesheet" type="text/css">
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        crossorigin="anonymous"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEpKuZuemSNn6XTCcM6TSe9Gk4WiZIE1c&callback=initMap">
+</script>
+
+<div id="map"></div>
+
+<script>
+    var clusters = {{.Data}};
+
+    function initMap() {
+        var centralView = {lat: -12.00596, lng: -77.01948};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: centralView
+        });
+
+        var iconURLPrefix = 'http://maps.google.com/mapfiles/ms/icons/';
+        var icons = [
+            iconURLPrefix + 'red-dot.png',
+            iconURLPrefix + 'green-dot.png',
+            iconURLPrefix + 'blue-dot.png',
+            iconURLPrefix + 'orange-dot.png',
+            iconURLPrefix + 'purple-dot.png',
+            iconURLPrefix + 'pink-dot.png'
+        ];
+
+        var iconIndex = 0;
+
+        $.each(clusters, function(index, cluster) {
+            var icon = icons[iconIndex++ % icons.length];
+            var label = cluster.ClusterId.toString();
+            for (i = 0; i < cluster.Points.length; i++) {
+                var point = cluster.Points[i];
+                var location = { lat: point.Values[0], lng: point.Values[1] };
+                addMarker(location, map, icon, label);
+            }
+        });
+    }
+
+    function addMarker(location, map, icon, label) {
+        var marker = new google.maps.Marker({
+            position: location,
+            label: label,
+            icon: icon,
+            map: map
+        });
+    }
+</script>
+</body>
+</html>
